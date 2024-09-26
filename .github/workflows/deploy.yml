@@ -21,8 +21,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        sudo docker build -t devruby/crevicebook .
-        sudo docker push devruby/crevicebook
+        docker build -t devruby/crevicebook .
+        docker push devruby/crevicebook
 
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@v1.0.3
