@@ -25,7 +25,7 @@ jobs:
         docker push devruby/crevicebook
 
     - name: SSH to EC2 and deploy
-      uses: appleboy/ssh-action@v0.1.0
+      uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
