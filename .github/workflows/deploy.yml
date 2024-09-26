@@ -21,8 +21,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t devruby/crevicebook .
-        docker push devruby/crevicebook
+        sudo docker build -t devruby/crevicebook .
+        sudo docker push devruby/crevicebook
 
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@v1.0.3
@@ -31,7 +31,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull devruby/crevicebook
-          docker stop crevicebook_container || true
-          docker rm crevicebook_container || true
-          docker run -d --name crevicebook_container -p 80:80 devruby/crevicebook
+          sudo docker pull devruby/crevicebook
+          sudo docker stop crevicebook_container || true
+          sudo docker rm crevicebook_container || true
+          sudo docker run -d --name crevicebook_container -p 80:80 devruby/crevicebook
