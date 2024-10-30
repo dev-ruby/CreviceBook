@@ -22,13 +22,21 @@
 
         <ul>
             {% for chapter in chapters %}
-            <li class="chapter-title">{{ chapter[0] }}</li>
-            <ul>
-                {% for item in chapter[1:] %}
-                <li><a href="/page/{{ ns.index }}" style="display: block">{{ item }}</a></li>
-                {% set ns.index = ns.index + 1 %}
-                {% endfor %}
-            </ul>
+                <li class="chapter-title">{{ chapter[0] }}</li>
+                
+                <ul>
+                    {% for item in chapter[1:] %}
+
+                    {% if current_page == ns.index %}
+                        <li class="active"><a href="/page/{{ ns.index }}" style="display: block">{{ item }}</a></li>
+                    {% else %}
+                        <li><a href="/page/{{ ns.index }}" style="display: block">{{ item }}</a></li>
+                    {% endif %}
+
+                        {% set ns.index = ns.index + 1 %}
+                    {% endfor %}
+
+                </ul>
             {% endfor %}
         </ul>
     </div>

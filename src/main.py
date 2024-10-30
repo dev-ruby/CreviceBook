@@ -61,5 +61,5 @@ async def render_page(request: Request, id: int):
     with open(f"pages/{id}.md", "r", encoding='utf-8') as fp:
         page_data = fp.read()
     return templates.TemplateResponse(
-        f"page.html", {"request": request, "chapters": chapters, "content": page_data}
+        f"page.html", {"request": request, "chapters": chapters, "content": page_data, "current_page": id}
     )

@@ -47,7 +47,6 @@ body {
     flex-grow: 1;
     overflow-y: auto;
     margin: 20px;
-    margin-top: 0;
 }
 
 .sidebar ul {
@@ -57,33 +56,42 @@ body {
 .sidebar ul li {
     font-size: 16px;
     padding: 8px 0;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-.sidebar ul li.section-title {
+.sidebar ul li.section-title,
+.sidebar ul li.chapter-title {
     font-weight: bold;
-    color: #333;
-    font-size: 18px;
     margin-bottom: 20px;
 }
 
+.sidebar ul li.section-title {
+    color: #333;
+    font-size: 18px;
+}
+
 .sidebar ul li.chapter-title {
-    font-weight: bold;
     color: #555;
     font-size: 17px;
     margin-top: 20px;
 }
 
-.sidebar ul li:hover {
+.active {
+    background-color: #208cff;
+    color: white;
+}
+
+.sidebar ul li:hover:not(.active) {
     background-color: #f0f0f0;
+}
+
+.sidebar ul:hover.active {
+    background-color: #459efd;
 }
 
 .content {
     margin-left: 350px;
-    padding-top: 100px;
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-bottom: 200px;
+    padding: 100px 150px 200px;
     background-color: white;
     width: calc(100% - 350px);
     height: 100vh;
@@ -93,7 +101,6 @@ body {
 .sidebar-content a {
     text-decoration: none;
     color: inherit;
-
 }
 
 .sidebar ul li:not(.chapter-title) {
