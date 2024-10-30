@@ -62,7 +62,6 @@ body {
 .sidebar ul li.section-title,
 .sidebar ul li.chapter-title {
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .sidebar ul li.section-title {
@@ -73,7 +72,6 @@ body {
 .sidebar ul li.chapter-title {
     color: #555;
     font-size: 17px;
-    margin-top: 20px;
 }
 
 .active {
@@ -113,4 +111,10 @@ body {
 
 p + p {
     margin-top: 10px;
+}
+
+.book-title {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 0px;
 }

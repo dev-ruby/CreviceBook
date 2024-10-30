@@ -39,21 +39,13 @@ chapters = [
         "2-8 문자열과 문자열 리터럴",
         "2-9 전처리문",
         "2-10 소스와 헤더",
-    ],
-    [
-        "연습해보기",
-        "3-1 별 찍기",
-        "3-2 소수 만들기",
-        "3-3 문자열 치환",
     ]
 ]
 
 
 @app.get("/", response_class=HTMLResponse)
 async def render_main(request: Request):
-    return templates.TemplateResponse(
-        "index.html", {"request": request, "chapters": chapters}
-    )
+    return await render_page(request, 0)
 
 
 @app.get("/page/{id}")
