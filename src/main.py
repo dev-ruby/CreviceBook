@@ -13,7 +13,7 @@ templates = Jinja2Templates(directory="templates")
 chapters = [
     [
         "들어가기에 앞서",
-        "0-1 작가의 말",
+        "0-1 서론, C 컴파일러 설치하기",
         "0-2 자연어의 모호성",
         "0-3 명령집합과 기계어"
     ],
@@ -39,6 +39,13 @@ chapters = [
         "2-8 문자열과 문자열 리터럴",
         "2-9 전처리문",
         "2-10 소스와 헤더",
+    ],
+    [
+        "연습해보기",
+        "3-1 직각삼각형",
+        "3-1-2 직각삼각형 정답 코드",
+        "3-2 소수 생성",
+        "3-2-1 소수 생성 정답 코드",
     ]
 ]
 
@@ -50,6 +57,8 @@ async def render_main(request: Request):
 
 @app.get("/page/{id}")
 async def render_page(request: Request, id: int):
+    assert type(id) == int
+
     with open(f"pages/{id}.md", "r", encoding='utf-8') as fp:
         page_data = fp.read()
     return templates.TemplateResponse(

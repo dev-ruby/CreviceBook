@@ -11,8 +11,18 @@
 {% block content %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const markdown_content = {{ content | tojson }};
-        document.getElementsByClassName('content')[0].innerHTML = marked.parse(markdown_content);
+        const raw_content = {{ content | tojson }};
+
+        if (raw_content.split("$$$$$").length === 2) {
+            document.getElementsByClassName('content')[0].innerHTML = marked.parse(raw_content.split("$$$$$")[0]) + raw_content.split("$$$$$")[1];
+
+            const script = document.createElement("script");
+            script.src = "https://www.jdoodle.com/assets/jdoodle-pym.min.js";
+            script.type = "text/javascript";
+            document.getElementById("jdoodle-container").appendChild(script);
+        }else{
+            document.getElementsByClassName('content')[0].innerHTML = marked.parse(raw_content.split("$$$$$")[0]);
+        }
     });
 </script>
 {% endblock %}
